@@ -1,0 +1,38 @@
+{
+  "name": "front-end-challenges",
+  "version": "1.0.0",
+  "description": "A simple way to track challenges from Picalli",
+  "main": ".eleventy.js",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "eleventy:default": "pnpx @11ty/eleventy",
+    "eleventy:watch": "pnpx @11ty/eleventy --watch",
+    "styles:dev": "postcss --watch src/**/*.css --base src --dir dist",
+    "styles:build": "postcss src/**/*.css --base src --dir dist",
+    "scripts:dev": "babel -w src --out-dir dist",
+    "scripts:build": "babel src --out-dir dist",
+    "serve": "light-server -c lightserver.config.json",
+    "dev": "npm-run-all clean eleventy:default --parallel styles:dev scripts:dev eleventy:watch serve",
+    "build": "npm-run-all clean eleventy:default styles:build scripts:build"
+  },
+  "keywords": [
+    "practice"
+  ],
+  "author": "Charles De Mount",
+  "license": "MIT",
+  "devDependencies": {
+    "@11ty/eleventy": "^0.10.0",
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.0",
+    "autoprefixer": "^9.7.5",
+    "cssnano": "^4.1.10",
+    "light-server": "^2.6.4",
+    "npm-run-all": "^4.1.5",
+    "postcss-cli": "^7.1.0",
+    "postcss-preset-env": "^6.7.0",
+    "precss": "^4.0.0",
+    "typescript": "^3.8.3"
+  },
+  "dependencies": {}
+}
