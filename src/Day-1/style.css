@@ -116,6 +116,8 @@ main {
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
+
+  filter: sepia(40%);
 }
 
 .character__description {
@@ -271,6 +273,9 @@ main {
   transform: rotate(0deg) skew(-45deg, 0);
 }
 
+.card__outer.highlight .card__shadow {
+  background-color: var(--accent-latin);
+}
 /* Random colors */
 .card__outer:nth-child(4n + 2) {
   .card__name {

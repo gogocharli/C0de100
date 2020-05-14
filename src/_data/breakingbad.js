@@ -1,5 +1,20 @@
 const fetch = require('node-fetch');
 
+function abbreviate([str1, str2]) {
+  let abbr;
+  if (!str2) {
+    if (str1.includes('-')) {
+      return abbreviate(str1.split('-'));
+    } else {
+      abbr = str1[0].toUpperCase();
+      return abbr;
+    }
+  }
+
+  abbr = str1[0].toUpperCase() + str2[0].toLowerCase();
+  return abbr;
+}
+
 function mapData(data) {
   const characters = [];
 
@@ -10,7 +25,7 @@ function mapData(data) {
       id: char_id,
       firstName: name[0],
       lastName: name[name.length - 1],
-      abbr: name[0][0],
+      abbr: abbreviate(name),
     });
   });
 

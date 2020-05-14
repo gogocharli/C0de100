@@ -9,24 +9,22 @@ description: Characters of Breaking Bad represented as atoms
 <div class="divider"></div>
 <main>
     <div class="character">
-
-        <div class="character__image">
-        </div>
+        <div class="character__image"></div>
 
         <div class="character__description">
-            <div class="text-block">
+            <div class="text-block js-name">
                 <h5>Name</h5>
                 <p>Walter White</p>
             </div>
-            <div class="text-block">
+            <div class="text-block js-nickname">
                 <h5>Nickname</h5>
                 <p>Heisenberg</p>
             </div>
-            <div class="text-block">
+            <div class="text-block js-occupation">
                 <h5>Occupation</h5>
                 <p>High School Chemistry Teacher</p>
             </div>
-            <div class="text-block">
+            <div class="text-block js-portrayed">
                 <h5>Portrayed By</h5>
                 <p>Bryan Cranston</p>
             </div>
@@ -43,6 +41,6 @@ description: Characters of Breaking Bad represented as atoms
     <!-- Empty Divs End -->
 
     {% for character in breakingbad %}
-        {% include 'Day-1/cardComponent' with id: character.id, abbr: character.abbr, firstName: character.firstName, lastName: character.lastName%}
+    {% include 'Day-1/cardComponent' with id: character.id, abbr: character.abbr, firstName: character.firstName, lastName: character.lastName%}
     {% endfor %}
 </main>
