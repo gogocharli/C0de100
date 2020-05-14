@@ -42,7 +42,7 @@ description: Characters of Breaking Bad represented as atoms
     <div class="empty4"></div>
     <!-- Empty Divs End -->
 
-    {% for i in (1..78) %}
-    {% include 'Day-1/cardComponent.liquid' %}
+    {% for character in breakingbad %}
+        {% include 'Day-1/cardComponent' with id: character.id, abbr: character.abbr, firstName: character.firstName, lastName: character.lastName%}
     {% endfor %}
 </main>

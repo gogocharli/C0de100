@@ -255,6 +255,7 @@ main {
   position: relative;
   width: 6.25rem;
   height: 6.25rem;
+  cursor: pointer;
 }
 
 .left {
