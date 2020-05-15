@@ -3,6 +3,7 @@ module.exports = function (eleventyConfig) {
     dynamicPartials: true,
   });
   eleventyConfig.addPassthroughCopy('src/**/*.jpg');
+  eleventyConfig.addPassthroughCopy('src/**/index.js');
   return {
     dir: {
       input: 'src',

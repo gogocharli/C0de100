@@ -12,8 +12,8 @@
     "scripts:dev": "babel -w src --out-dir dist",
     "scripts:build": "babel src --out-dir dist",
     "serve": "light-server -c lightserver.config.json",
-    "dev": "npm-run-all clean eleventy:default --parallel styles:dev scripts:dev eleventy:watch serve",
-    "build": "npm-run-all clean eleventy:default styles:build scripts:build"
+    "dev": "npm-run-all clean eleventy:default --parallel styles:dev eleventy:watch serve",
+    "build": "npm-run-all clean eleventy:default styles:build"
   },
   "keywords": [
     "practice"
@@ -24,6 +24,7 @@
     "@11ty/eleventy": "^0.10.0",
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
+    "@babel/plugin-transform-runtime": "^7.9.6",
     "@babel/preset-env": "^7.9.0",
     "autoprefixer": "^9.7.5",
     "cssnano": "^4.1.10",

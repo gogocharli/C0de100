@@ -9,7 +9,7 @@ description: Compilation of projects from the challenge
 <ul>
     {% for project in collections.projects %}
     <li>
-        <a href="{{project.url}}">{{ project.url }}</a>
+        <a href="{{project.url}}">{{ project.data.pageTitle }}</a>
     </li>
     {% endfor %}
 </ul>
