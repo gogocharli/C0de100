@@ -1,0 +1,15 @@
+---
+layout: base-layout.liquid
+pageTitle: 100 days of Code
+description: Compilation of projects from the challenge
+---
+
+<h1>100 Days of Code</h1>
+
+<ul>
+    {% for project in collections.projects %}
+    <li>
+        <a href="{{project.url}}">{{ project.url }}</a>
+    </li>
+    {% endfor %}
+</ul>
