@@ -26,6 +26,7 @@ function mapData(data) {
 
 // Copywriter effect
 function writeText(el, str = '') {
+  // Reset the inner text of the element and initialize the content
   let newContent = '';
   let num = 0;
 
@@ -36,11 +37,11 @@ function writeText(el, str = '') {
       clearInterval(addInterval);
       clearInterval(randomInterval);
     }
-  }, 50);
+  }, 75);
 
   const randomInterval = setInterval(() => {
     el.innerText = newContent;
-  }, 50);
+  }, 25);
 }
 
 const charName = document.querySelector('.js-name p');
@@ -60,7 +61,7 @@ function displayInfo(element) {
 
   // Update the character information
   writeText(charName, character.name);
-  writeText(charNickname, character.nickName);
+  writeText(charNickname, character.nickname);
   writeText(charOccup, character.occupation);
   writeText(charActor, character.portrayed);
 

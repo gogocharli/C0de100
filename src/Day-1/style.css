@@ -338,12 +338,33 @@ main {
 
 .card__outer.highlight {
   .card__shadow {
-    background-color: var(--accent-arabic);
+    background-color: var(--color-green);
   }
   .card {
-    --color-shadow: var(--accent-arabic);
+    --color-shadow: var(--color-green);
   }
   .card__corner {
-    background-color: var(--accent-arabic);
+    background-color: var(--color-green);
+  }
+}
+
+/* footer */
+footer {
+  display: flex;
+  align-items: center;
+
+  width: calc(100vw - 6rem);
+  margin-left: 3rem;
+
+  svg {
+    width: 12rem;
+    height: 5.75rem;
+  }
+
+  p {
+    font-family: var(--condensed);
+    font-size: 1.5rem;
+    line-height: 1.333;
+    text-align: right;
   }
 }
