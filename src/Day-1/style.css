@@ -179,6 +179,8 @@ main {
 
 /* Card styles */
 .card {
+  --color-shadow: var(--color-black);
+
   background-color: white;
   overflow: hidden;
   width: 6.25em;
@@ -186,7 +188,7 @@ main {
   position: relative;
 
   font-weight: 700;
-  box-shadow: inset 0 0 0 0.125em var(--color-black);
+  box-shadow: inset 0 0 0 0.125em var(--color-shadow);
   border-top-right-radius: 0.5em;
 
   &__item {
@@ -241,7 +243,7 @@ main {
     background-color: var(--color-green);
     width: 1em;
     height: 1em;
-    box-shadow: inset 0 0 0 0.125em var(--color-black);
+    box-shadow: inset 0 0 0 0.125em var(--color-shadow);
     border-top-right-radius: 0.5em;
   }
 }
@@ -273,9 +275,6 @@ main {
   transform: rotate(0deg) skew(-45deg, 0);
 }
 
-.card__outer.highlight .card__shadow {
-  background-color: var(--accent-latin);
-}
 /* Random colors */
 .card__outer:nth-child(4n + 2) {
   .card__name {
@@ -334,5 +333,17 @@ main {
 
   .card__corner {
     background-color: var(--accent-spanish);
+  }
+}
+
+.card__outer.highlight {
+  .card__shadow {
+    background-color: var(--accent-arabic);
+  }
+  .card {
+    --color-shadow: var(--accent-arabic);
+  }
+  .card__corner {
+    background-color: var(--accent-arabic);
   }
 }

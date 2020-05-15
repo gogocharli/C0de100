@@ -24,6 +24,25 @@ function mapData(data) {
   });
 }
 
+// Copywriter effect
+function writeText(el, str = '') {
+  let newContent = '';
+  let num = 0;
+
+  const addInterval = setInterval(() => {
+    num++;
+    newContent = str.substring(0, num);
+    if (str == el.innerText) {
+      clearInterval(addInterval);
+      clearInterval(randomInterval);
+    }
+  }, 50);
+
+  const randomInterval = setInterval(() => {
+    el.innerText = newContent;
+  }, 50);
+}
+
 const charName = document.querySelector('.js-name p');
 const charNickname = document.querySelector('.js-nickname p');
 const charOccup = document.querySelector('.js-occupation p');
@@ -39,10 +58,12 @@ function displayInfo(element) {
   let index = Number(element.getAttribute('data-id')) - 1;
   let character = characters[index];
 
-  charName.innerText = character.name;
-  charNickname.innerText = character.nickname;
-  charOccup.innerText = character.occupation;
-  charActor.innerText = character.portrayed;
+  // Update the character information
+  writeText(charName, character.name);
+  writeText(charNickname, character.nickName);
+  writeText(charOccup, character.occupation);
+  writeText(charActor, character.portrayed);
+
   charImage.style.backgroundImage = `url(${character.imageURL})`;
 }
 

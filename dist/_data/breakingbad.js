@@ -35,7 +35,7 @@ function mapData(data) {
 }
 
 module.exports = async () => {
-  const res = await fetch('https://www.breakingbadapi.com/api/characters');
+  const res = await fetch('https://www.breakingbadapi.com/api/characters?limit=60');
   const results = await res.json();
   const content = await mapData(results);
   return content;
