@@ -1,0 +1,168 @@
+:root {
+  box-sizing: border-box;
+  font-size: calc(0.1em + 1vw);
+
+  --color-bg: #ffffff;
+  --color-text: #000000;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+@font-face {
+  font-family: 'Otto Attac';
+  font-weight: 300;
+  src: url('assets/OTTOATTACTYPE.ttf');
+}
+
+@font-face {
+  font-family: 'Agrandir Wide';
+  src: url('assets/Agrandir-WideLight.otf');
+}
+
+body {
+  font-family: 'Agrandir Wide', sans-serif;
+  line-height: 1.4;
+  text-align: center;
+
+  min-width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  font-family: 'Otto Attac', serif;
+  font-size: 6rem;
+  line-height: 1;
+
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-text);
+  display: block;
+}
+
+.inner-link {
+  width: 10em;
+  padding: 0.75em 0;
+  margin-top: 5em;
+
+  align-self: center;
+
+  border: 1px solid var(--color-text);
+  border-radius: 2em;
+}
+
+p {
+  font-size: 1.25rem;
+  max-width: 16.5em;
+  margin: 0 auto;
+  line-height: 1.45;
+}
+
+p + p {
+  margin-top: 1em;
+}
+.round {
+  position: absolute;
+
+  width: 6.25em;
+  height: 6.25em;
+  border-radius: 100%;
+
+  pointer-events: auto;
+  filter: grayscale(1);
+  transition: filter 0.5s ease;
+}
+
+.round:hover {
+  filter: grayscale(0);
+}
+
+/* Placing images on the homepage */
+.round:nth-of-type(1) {
+  top: 6vh;
+  left: 32vw;
+}
+.round:nth-of-type(2) {
+  top: 20vh;
+  left: 8vw;
+}
+.round:nth-of-type(3) {
+  top: 50vh;
+  left: 16vw;
+}
+.round:nth-of-type(4) {
+  top: 80vh;
+  left: 24vw;
+}
+.round:nth-of-type(5) {
+  top: 88vh;
+  left: 50vw;
+}
+.round:nth-of-type(6) {
+  top: 64vh;
+  left: 80vw;
+}
+.round:nth-of-type(7) {
+  top: 40vh;
+  left: 90vw;
+}
+.round:nth-of-type(8) {
+  top: 6vh;
+  left: 60vw;
+}
+.round:nth-of-type(9) {
+  top: 12vh;
+  left: 82vw;
+}
+
+/* Login Page */
+.login {
+  h1 {
+    margin-bottom: 0.75em;
+  }
+
+  a {
+    margin-top: 2em;
+  }
+}
+
+/* Results Page */
+.score {
+  font-family: 'Agrandir Wide', sans-serif;
+  font-size: 2.5rem;
+}
+
+.ranking {
+  font-family: 'Otto Attac', Georgia, serif;
+  font-size: 6rem;
+  line-height: 1;
+
+  display: flex;
+  flex-direction: column;
+  margin: 0.5em 0;
+
+  span {
+    font-family: 'Agrandir Wide', sans-serif;
+    font-size: 0.875rem;
+    line-height: 1.4;
+
+    margin-bottom: 1.1428em;
+  }
+}
