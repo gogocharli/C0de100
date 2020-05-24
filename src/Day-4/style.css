@@ -135,7 +135,7 @@ p + p {
 /* Login Page */
 .login {
   h1 {
-    margin-bottom: 0.75em;
+    margin-bottom: 0.5em;
   }
 
   a {
@@ -164,5 +164,85 @@ p + p {
     line-height: 1.4;
 
     margin-bottom: 1.1428em;
+  }
+}
+
+@media screen and (max-width: 65em) {
+  body {
+    font-size: 1.2rem;
+  }
+}
+
+@media screen and (max-width: 40em) {
+  body {
+    font-size: 3.2rem;
+  }
+
+  h1 {
+    font-size: 12.75rem;
+  }
+
+  .inner-link {
+    margin-top: 2.5em;
+  }
+
+  p {
+    font-size: 3.8rem;
+  }
+
+  .round {
+    width: 4em;
+    height: 4em;
+  }
+
+  /* Results Page */
+  .score {
+    font-size: 8rem;
+  }
+
+  .ranking {
+    font-size: 12rem;
+
+    span {
+      font-size: 2.8rem;
+      margin-bottom: 0.75em;
+    }
+  }
+
+  .round:nth-of-type(1) {
+    top: 16vh;
+    left: 40vw;
+  }
+  .round:nth-of-type(2) {
+    top: 24vh;
+    left: 8vw;
+  }
+  .round:nth-of-type(3) {
+    top: 80vh;
+    left: 4vw;
+  }
+  .round:nth-of-type(4) {
+    top: 64vh;
+    left: 28vw;
+  }
+  .round:nth-of-type(5) {
+    top: 88vh;
+    left: 50vw;
+  }
+  .round:nth-of-type(6) {
+    top: 70vh;
+    left: 80vw;
+  }
+  .round:nth-of-type(7) {
+    top: 50vh;
+    left: 90vw;
+  }
+  .round:nth-of-type(8) {
+    top: 32vh;
+    left: 60vw;
+  }
+  .round:nth-of-type(9) {
+    top: 12vh;
+    left: 82vw;
   }
 }
