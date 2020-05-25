@@ -1,4 +1,5 @@
 dependencies:
+  js-base64: 2.5.2
   node-fetch: 2.6.0
   spotify-web-api-node: 4.0.0
 devDependencies:
@@ -9,6 +10,7 @@ devDependencies:
   '@babel/preset-env': 7.9.0_@babel+core@7.9.0
   autoprefixer: 9.7.5
   cssnano: 4.1.10
+  dotenv: 8.2.0
   light-server: 2.6.4
   npm-run-all: 4.1.5
   postcss-cli: 7.1.0
@@ -2237,6 +2239,12 @@ packages:
       node: '>=8'
     resolution:
       integrity: sha512-uEUyaDKoSQ1M4Oq8l45hSE26SnTxL6snNnqvK/VWx5wJhmff5z0FUVJDKDanor/6w3kzE3i7XZOk+7wC0EXr1A==
+  /dotenv/8.2.0:
+    dev: true
+    engines:
+      node: '>=8'
+    resolution:
+      integrity: sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
   /easy-extender/2.3.4:
     dependencies:
       lodash: 4.17.15
@@ -3431,7 +3439,6 @@ packages:
     resolution:
       integrity: sha512-yV+gqbd5vaOYjqlbk16EG89xB5udgjqQF3C5FAORDg4f/IS1Yc5ERCv5e/57yBcfJYw05V5JyIXabhwb75Xxow==
   /js-base64/2.5.2:
-    dev: true
     resolution:
       integrity: sha512-Vg8czh0Q7sFBSUMWWArX/miJeBWYBPpdU/3M/DKSaekLMqrqVPaedp+5mZhie/r0lgrcaYBfwXatEew6gwgiQQ==
   /js-beautify/1.10.3:
@@ -6819,6 +6826,8 @@ specifiers:
   '@babel/preset-env': ^7.9.0
   autoprefixer: ^9.7.5
   cssnano: ^4.1.10
+  dotenv: ^8.2.0
+  js-base64: ^2.5.2
   light-server: ^2.6.4
   node-fetch: ^2.6.0
   npm-run-all: ^4.1.5
