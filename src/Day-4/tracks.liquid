@@ -1,0 +1,13 @@
+---
+permalink: /Day-4/tracks.json
+---
+[
+    {%- for trackID in beyonce -%}
+        "{{ trackID }}"
+        {%- if forloop.last == true -%}
+
+        {%- else -%}
+            ,
+        {%- endif -%}
+    {%- endfor -%}
+]
