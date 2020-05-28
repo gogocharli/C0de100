@@ -1,7 +1,7 @@
 // Will prompt the user to authorize and then redirect to the specified uri
 function authorize() {
   const clientID = '0c9e398e8f2f4e79b65220a6e57ef524';
-  const redirect = 'https:%2F%2F100codingdays.netlify.app%2FDay-4%2Fresults';
+  const redirect = 'https://100codingdays.netlify.app/Day-4/results';
 
   // Redirect the user to that location first
   window.location.replace(
