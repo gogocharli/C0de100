@@ -8,7 +8,7 @@ const fetch = require('node-fetch');
 const beyonceId = '6vWDO969PvNqNYHIOW5v0m';
 
 // Get the access token using the client credentials auth flow
-async function getToken() {
+const getToken = async function () {
   const res = await fetch('https://accounts.spotify.com/api/token', {
     method: 'POST',
     headers: {
@@ -21,10 +21,10 @@ async function getToken() {
   });
   const tokenResponse = await res.json();
   return tokenResponse['access_token'];
-}
+};
 
 // Search for tracks belonging to the artist
-async function getTracks(token, offsetMax = 1) {
+const getTracks = async function (token, offsetMax = 1) {
   let tracks = [];
 
   // Since the API limit for this query is 50 results, I am making it multiple times to get enouth items
@@ -46,7 +46,7 @@ async function getTracks(token, offsetMax = 1) {
     offset += 50;
   }
   return tracks;
-}
+};
 
 // Map the data to an object I can work with. While recieving an array of the tracks
 function mapData(tracks = []) {
