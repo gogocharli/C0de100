@@ -1,5 +1,5 @@
 // Will prompt the user to authorize and then redirect to the specified uri
-async function authorize() {
+function authorize() {
   const clientID = '0c9e398e8f2f4e79b65220a6e57ef524';
 
   // Redirect them to the loading page and use the token to make the requests
