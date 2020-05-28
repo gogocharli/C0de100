@@ -41,8 +41,8 @@ async function getTracks(token, offsetMax = 1) {
     );
     const data = await res.json();
 
-    // Use the old tracks array and append the newly recieved set of results, then flatten it
-    tracks = await [tracks, ...data.tracks.items].flat();
+    // Use the old tracks array and append the newly recieved set of results
+    tracks = await [...tracks, ...data.tracks.items];
     offset += 50;
   }
   return tracks;
