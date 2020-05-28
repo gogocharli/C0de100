@@ -1,11 +1,11 @@
 // Will prompt the user to authorize and then redirect to the specified uri
 function authorize() {
   const clientID = '0c9e398e8f2f4e79b65220a6e57ef524';
-
-  // Redirect them to the loading page and use the token to make the requests
   const redirect = 'https:%2F%2F100codingdays.netlify.app%2FDay-4%2Fresults';
-  window.fetch(
-    `https://cors-anywhere.herokuapp.com/https://accounts.spotify.com/authorize?client_id=${clientID}&redirect_uri=${redirect}&scope=user-read-private&response_type=token`
+
+  // Redirect the user to that location first
+  window.location.replace(
+    `https://accounts.spotify.com/authorize?client_id=${clientID}&redirect_uri=${redirect}&scope=user-read-private&response_type=token`
   );
 }
 
