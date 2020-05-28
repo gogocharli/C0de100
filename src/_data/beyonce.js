@@ -40,9 +40,9 @@ async function getTracks(token, offsetMax = 1) {
       }
     );
     const data = await res.json();
-
+    const currentTracks = data.tracks.items;
     // Use the old tracks array and append the newly recieved set of results
-    tracks = await [...tracks, ...data.tracks.items];
+    tracks = [...tracks, ...currentTracks];
     offset += 50;
   }
   return tracks;
