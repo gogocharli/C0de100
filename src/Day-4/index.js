@@ -10,6 +10,7 @@ function authorize() {
 }
 
 // Get the track IDs and split the array into chuncks of 50
+let trackCount = 0;
 const getIDs = async function () {
   const res = await fetch('/Day-4/tracks.json');
   const data = await res.json();
@@ -18,6 +19,7 @@ const getIDs = async function () {
     trackIDs.push(data.slice(0, 50));
     data.splice(0, 50);
   }
+  trackCount = trackIDs.length;
   return trackIDs;
 };
 
@@ -50,7 +52,7 @@ const checkTracks = async function (tracks) {
 
 // Update the score and ranking on the results page
 function calculateScore(count) {
-  const total = 196;
+  const total = trackCount;
   return Math.floor((count * 100) / total);
 }
 
@@ -80,10 +82,10 @@ function updateRanking(userCount) {
   // Update the DOM with appropriate results
   const rankingText = document.querySelector('.ranking');
   const rankingSpan = rankingText.querySelector('span');
-  const scoreEl = document.querySelector('.score');
+  const scoreEl = document.querySelector('.score span');
 
   rankingText.innerHTML = `<span>You are a…</span>${ranking}`;
-  scoreEl.innerText = score + '/100';
+  scoreEl.innerText = score;
 }
 
 if (document.URL.includes('login')) {

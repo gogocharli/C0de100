@@ -13,14 +13,17 @@
     <meta name="description" content="">
 </head>
 
-<body>
-    
-<main id="login" class="login">
-    <h1>Beyond-C</h1>
-    <p>Beyond-C is a test made to determine how much of a Beyoncé fan you really are.</p>
-    <p>By using your Spotify account, we give you a ranking based on your listening history.</p>
-    <a href="../results/" class="inner-link js-authorize">Get Started</a>
-</main>
+
+<body data-barba="wrapper">
+    <main id="login" class="login" data-barba="container" data-barba-namespace="login">
+        <h1>Beyond-C</h1>
+        <p>Beyond-C is a test made to determine how much of a Beyoncé fan you really are.</p>
+        <p>By using your Spotify account, we give you a ranking based on your listening history.</p>
+        <a href="../callback/" class="inner-link js-authorize">Get Started</a>
+    </main>
+    <script src="/Day-4/barba.js"></script>
+    <script src="/Day-4/gsap.js"></script>
+    <script src="/Day-4/transitions.js"></script>
 </body>
 
 </html>

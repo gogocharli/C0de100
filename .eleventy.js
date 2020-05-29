@@ -13,6 +13,9 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy('src/**/*.eot');
 
   eleventyConfig.addPassthroughCopy('src/**/index.js');
+  eleventyConfig.addPassthroughCopy('src/Day-4/barba.js');
+  eleventyConfig.addPassthroughCopy('src/Day-4/transitions.js');
+  eleventyConfig.addPassthroughCopy('src/Day-4/gsap.js');
   return {
     dir: {
       input: 'src',
