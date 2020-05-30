@@ -1,14 +1,3 @@
-// Will prompt the user to authorize and then redirect to the specified uri
-function authorize() {
-  const clientID = '0c9e398e8f2f4e79b65220a6e57ef524';
-  const redirect = 'https://100codingdays.netlify.app/Day-4/callback/';
-
-  // Redirect the user to that location first
-  window.location.replace(
-    `https://accounts.spotify.com/authorize?client_id=${clientID}&redirect_uri=${redirect}&scope=user-read-private&response_type=token`
-  );
-}
-
 // Get the track IDs and split the array into chuncks of 50
 let trackCount = 0;
 const getIDs = async function () {
@@ -19,7 +8,7 @@ const getIDs = async function () {
     trackIDs.push(data.slice(0, 50));
     data.splice(0, 50);
   }
-  trackCount = trackIDs.length;
+  trackCount = trackIDs.flat().length;
   return trackIDs;
 };
 
@@ -86,18 +75,6 @@ function updateRanking(userCount) {
 
   rankingText.innerHTML = `<span>You are a…</span>${ranking}`;
   scoreEl.innerText = score;
-}
-
-if (document.URL.includes('login')) {
-  const getStarted = document.querySelector('.js-authorize');
-  getStarted.addEventListener(
-    'click',
-    e => {
-      e.preventDefault();
-      authorize();
-    },
-    'once'
-  );
 }
 
 if (document.URL.includes('callback')) {

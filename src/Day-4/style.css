@@ -68,6 +68,15 @@ h1 {
   margin: 0;
 }
 
+button {
+  font-family: inherit;
+  background: none;
+  font-size: 1em;
+  color: inherit;
+  margin: 0;
+  cursor: pointer;
+}
+
 a {
   text-decoration: none;
   color: var(--color-text);

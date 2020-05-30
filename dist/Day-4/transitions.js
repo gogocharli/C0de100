@@ -30,8 +30,20 @@ barba.init({
 
           timeline
             .set(wiper, { y: '100%' })
-            .to(elements, { opacity: 0, y: -300 }, 0)
+            .to(elements, { opacity: 0, y: -300, ease: 'power4.inOut' }, 0)
             .to(wiper, { y: 0 }, 0);
+        });
+      },
+      beforeEnter({ current, next, trigger }) {
+        return new Promise(resolve => {
+          const timeline = gsap.timeline({
+            onComplete() {
+              resolve();
+            },
+          });
+
+          // Allow the the wiper to stay on screen for one and a half seconds
+          timeline.to(wiper, { duration: 1.5, x: 0 });
         });
       },
       enter({ current, next, trigger }) {
@@ -42,16 +54,54 @@ barba.init({
             },
           });
 
+          timeline.to(wiper, { y: '-100%' }, 0);
+        });
+      },
+      after({ current }) {
+        return new Promise(resolve => {
           // Select all the direct children of the container
           const elements = current.container.querySelectorAll('*');
+          const timeline = gsap.timeline({
+            onComplete() {
+              resolve();
+            },
+          });
 
-          timeline
-            .set(elements, { opacity: 0, y: -300 })
-            .to(wiper, { y: '-100%' }, 0)
-            .to(elements, { opacity: 1, y: 0 }, 1);
+          // TODO Animate them with a stagger after we've entered the page
+          timeline.from(elements, {
+            opacity: 0,
+            y: 300,
+            stagger: 0.2,
+            ease: 'sine',
+          });
         });
       },
     },
+    // {
+    //   name: 'firstLoad',
+    //   beforeOnce() {
+    //     return new Promise(resolve => {
+    //       const timeline = gsap.timeline({
+    //         onComplete() {
+    //           resolve();
+    //         },
+    //       });
+
+    //       timeline.to(wiper, { y: 0, duration: 1, ease: 'power4.inOut' });
+    //     });
+    //   },
+    //   once() {
+    //     return new Promise(resolve => {
+    //       const timeline = gsap.timeline({
+    //         onComplete() {
+    //           resolve();
+    //         },
+    //       });
+
+    //       timeline.to(wiper, { y: '-100%', ease: 'power4.inOut' });
+    //     });
+    //   },
+    // },
   ],
   views: [],
   debug: true,
