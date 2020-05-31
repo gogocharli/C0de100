@@ -49,7 +49,7 @@ const getTracks = async function (token, offsetMax = 1) {
 };
 
 // Map the data to an object I can work with. While recieving an array of the tracks
-function mapData(tracks = []) {
+const mapData = function (tracks = []) {
   const trackIDs = [];
   // Tracks is an array of IDs of the different Beyonce tracks as IDs
   for (let track of tracks) {
@@ -59,7 +59,7 @@ function mapData(tracks = []) {
     }
   }
   return trackIDs;
-}
+};
 
 async function getBeyonce() {
   const token = await getToken();

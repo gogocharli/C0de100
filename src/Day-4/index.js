@@ -1,9 +1,17 @@
-// Get the track IDs and split the array into chuncks of 50
+// The number of tracks from Beyoncé we retrieved from the backend
 let trackCount = 0;
+
+// A regular expression to get the token from the callback url
+const tokenRegex = new RegExp(/access_token=([^&]*)/, 'gi');
+let token;
+
+// Get the IDs to check against the user's saved tracks
 const getIDs = async function () {
   const res = await fetch('/Day-4/tracks.json');
   const data = await res.json();
   let trackIDs = [];
+
+  // Place every track in the new array in chuncks of 50
   while (data.length) {
     trackIDs.push(data.slice(0, 50));
     data.splice(0, 50);
@@ -13,12 +21,11 @@ const getIDs = async function () {
 };
 
 // Check if the user saved tracks contain all Beyonce songs
-// A regular expression to get the token from the callback response from the server
-const tokenRegex = new RegExp(/access_token=([^&]*)/, 'gi');
 const checkTracks = async function (tracks) {
-  const token = tokenRegex.exec(document.URL)[1];
-  let results = [];
   // Since the API limit for this query is 50 results, I am making it multiple times to get all the results
+  let results = [];
+
+  // Make enough calls to verify the user's library against all the tracks
   for (let i = 0; i < tracks.length; i++) {
     const res = await fetch(
       `https://api.spotify.com/v1/me/tracks/contains?ids=${tracks[i].join()}`,
@@ -35,19 +42,19 @@ const checkTracks = async function (tracks) {
     results = await [...results, ...data];
   }
 
-  // Return an array of the positive results
+  // Return the number of positive results
   return results.filter(el => el).length;
 };
 
-// Update the score and ranking on the results page
-function calculateScore(count) {
+// Assign a score based on the number of positive results obtained
+const calculateScore = function (count) {
   const total = trackCount;
   return Math.floor((count * 100) / total);
-}
+};
 
-function giveRanking(score) {
+const giveRanking = function (score) {
   let ranking;
-  if (score >= 0 && score < 20) {
+  if (score < 20) {
     ranking = 'Larvae';
   } else if (score >= 20 && score < 40) {
     ranking = 'Forager Bee';
@@ -59,9 +66,10 @@ function giveRanking(score) {
     ranking = 'Soldier Bee';
   }
   return ranking;
-}
+};
 
-function updateRanking(userCount) {
+// Show the appropriate ranking and score to the user
+const updateRanking = function (userCount) {
   // Calculate the score
   const score = calculateScore(userCount);
 
@@ -75,12 +83,30 @@ function updateRanking(userCount) {
 
   rankingText.innerHTML = `<span>You are a…</span>${ranking}`;
   scoreEl.innerText = score;
-}
+};
+
+// In case of an error, make sure to notify the user appropriately
+const handleError = function (error) {
+  // Notify the user
+  const rankingText = document.querySelector('.ranking');
+  rankingText.innerHTML = `<span>There was a problem</span>Oopsie!`;
+
+  // Console log the error
+  console.log(error);
+};
 
 if (document.URL.includes('callback')) {
   (async function () {
-    const beyonceTracks = await getIDs();
-    const userCount = await checkTracks(beyonceTracks);
-    updateRanking(userCount);
+    try {
+      // Update the token value
+      token = tokenRegex.exec(document.URL)[1];
+
+      // Get and update the score
+      const beyonceTracks = await getIDs();
+      const userCount = await checkTracks(beyonceTracks);
+      updateRanking(userCount);
+    } catch (err) {
+      handleError(err);
+    }
   })();
 }

@@ -37,6 +37,8 @@
     "typescript": "^3.8.3"
   },
   "dependencies": {
+    "@barba/core": "^2.9.7",
+    "gsap": "^3.2.6",
     "js-base64": "^2.5.2",
     "node-fetch": "^2.6.0",
     "spotify-web-api-node": "^4.0.0"
