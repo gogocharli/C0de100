@@ -28,7 +28,9 @@ const checkTracks = async function (tracks) {
   // Make enough calls to verify the user's library against all the tracks
   for (let i = 0; i < tracks.length; i++) {
     const res = await fetch(
-      `https://api.spotify.com/v1/me/tracks/contains?ids=${tracks[i].join()}`,
+      `https://cors-anywhere.herokuapp.com/https://api.spotify.com/v1/me/tracks/contains?ids=${tracks[
+        i
+      ].join()}`,
       {
         method: 'GET',
         headers: {
