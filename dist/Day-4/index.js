@@ -78,7 +78,7 @@ const increment = function (el, value) {
     if (current > value) {
       clearInterval(updateInterval);
     }
-  }, 50);
+  }, 75);
 };
 
 // Show the appropriate ranking and score to the user
