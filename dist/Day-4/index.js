@@ -68,6 +68,19 @@ const giveRanking = function (score) {
   return ranking;
 };
 
+const increment = function (el, value) {
+  // Use setTimeout to increment the number inside the element from 0 to the value
+  let current = 0;
+  const updateInterval = setInterval(() => {
+    el.innerText = `${current}`;
+    current++;
+
+    if (current > value) {
+      clearInterval(updateInterval);
+    }
+  }, 50);
+};
+
 // Show the appropriate ranking and score to the user
 const updateRanking = function (userCount) {
   // Calculate the score
@@ -82,7 +95,9 @@ const updateRanking = function (userCount) {
   const scoreEl = document.querySelector('.score span');
 
   rankingText.innerHTML = `<span>You are a…</span>${ranking}`;
-  scoreEl.innerText = score;
+
+  // Increment the value inside this span until it reaches the score
+  increment(scoreEl, score);
 };
 
 // In case of an error, make sure to notify the user appropriately

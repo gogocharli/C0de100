@@ -16,6 +16,30 @@ barba.init({
   transitions: [
     {
       name: 'next',
+      once({ current, next, trigger }) {
+        return new Promise(resolve => {
+          const timeline = gsap.timeline({
+            onComplete() {
+              resolve();
+            },
+          });
+
+          const elements = next.container.querySelectorAll('*');
+          timeline
+            .set(elements, { y: -50, opacity: 0 })
+            .to(wiper, {
+              y: '-100%',
+              ease: 'power4.inOut',
+              duration: 1.5,
+            })
+            .to(elements, {
+              opacity: 1,
+              y: 0,
+              stagger: 0.075,
+              ease: 'sine',
+            });
+        });
+      },
       leave({ current, next, trigger }) {
         return new Promise(resolve => {
           const timeline = gsap.timeline({
@@ -29,9 +53,14 @@ barba.init({
           const elements = current.container.querySelectorAll('*');
 
           timeline
+            // Reset the wiper position to the bottom of the document
             .set(wiper, { y: '100%' })
-            .to(elements, { opacity: 0, y: -300, ease: 'power4.inOut' }, 0)
-            .to(wiper, { y: 0 }, 0);
+            .to(
+              elements,
+              { opacity: 0, y: -50, ease: 'sine', stagger: 0.05 },
+              1
+            )
+            .to(wiper, { y: 0 }, 2);
         });
       },
       beforeEnter({ current, next, trigger }) {
@@ -42,8 +71,11 @@ barba.init({
             },
           });
 
+          const elements = next.container.querySelectorAll('*');
           // Allow the the wiper to stay on screen for one and a half seconds
-          timeline.to(wiper, { duration: 1.5, x: 0 });
+          timeline
+            .set(elements, { y: -50, opacity: 0 })
+            .to(wiper, { duration: 1, x: 0 });
         });
       },
       enter({ current, next, trigger }) {
@@ -54,54 +86,17 @@ barba.init({
             },
           });
 
-          timeline.to(wiper, { y: '-100%' }, 0);
-        });
-      },
-      after({ current }) {
-        return new Promise(resolve => {
-          // Select all the direct children of the container
-          const elements = current.container.querySelectorAll('*');
-          const timeline = gsap.timeline({
-            onComplete() {
-              resolve();
-            },
-          });
+          const elements = next.container.querySelectorAll('*');
 
-          // TODO Animate them with a stagger after we've entered the page
-          timeline.from(elements, {
-            opacity: 0,
-            y: 300,
-            stagger: 0.2,
+          timeline.to(wiper, { y: '-100%' }).to(elements, {
+            opacity: 1,
+            y: 0,
+            stagger: 0.075,
             ease: 'sine',
           });
         });
       },
     },
-    // {
-    //   name: 'firstLoad',
-    //   beforeOnce() {
-    //     return new Promise(resolve => {
-    //       const timeline = gsap.timeline({
-    //         onComplete() {
-    //           resolve();
-    //         },
-    //       });
-
-    //       timeline.to(wiper, { y: 0, duration: 1, ease: 'power4.inOut' });
-    //     });
-    //   },
-    //   once() {
-    //     return new Promise(resolve => {
-    //       const timeline = gsap.timeline({
-    //         onComplete() {
-    //           resolve();
-    //         },
-    //       });
-
-    //       timeline.to(wiper, { y: '-100%', ease: 'power4.inOut' });
-    //     });
-    //   },
-    // },
   ],
   views: [],
   debug: true,

@@ -210,7 +210,6 @@ p + p {
 
   background-color: #ff935c;
   color: var(--color-bg);
-  transform: translateY(100%);
 }
 
 .wiper span {
