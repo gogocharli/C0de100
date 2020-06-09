@@ -110,6 +110,7 @@ const handleError = function (error) {
   console.log(error);
 };
 
+// Only run this function on the callback page
 if (document.URL.includes('callback')) {
   (async function () {
     try {
